@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS | College Management System</title>
+<style>
+:root{--bg:#050816;--panel:#0b1224;--panel2:#101a31;--line:#233252;--text:#eaf2ff;--muted:#8da0c2;--cyan:#28d7ff;--purple:#8b5cf6;--green:#35e08b;--red:#ff5d73;--yellow:#ffd166}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial;background:radial-gradient(circle at 20% 10%,#17235c 0,#050816 35%),#050816;color:var(--text);min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer}
+.top{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:#050816cc;backdrop-filter:blur(16px);position:sticky;top:0;z-index:10}
+.logo{font-weight:900;letter-spacing:3px;color:var(--cyan);font-size:20px}.logo span{color:#fff}
+.status{font-size:12px;color:var(--green);display:flex;gap:7px;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 15px var(--green)}
+.container{max-width:1200px;margin:auto;padding:45px 22px}.hero{text-align:center;padding:45px 0 35px}.eyebrow{color:var(--cyan);letter-spacing:3px;font-size:12px}.hero h1{font-size:clamp(35px,6vw,70px);margin:12px 0;background:linear-gradient(90deg,#fff,var(--cyan),#a78bfa);-webkit-background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:680px;margin:auto;line-height:1.7}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:900px;margin:30px auto}.card{background:linear-gradient(145deg,#0e1730dd,#080e20dd);border:1px solid var(--line);border-radius:22px;padding:30px;transition:.25s;box-shadow:0 20px 70px #0004}.card:hover{transform:translateY(-5px);border-color:#31558e;box-shadow:0 20px 80px #1c8fff18}.icon{font-size:42px}.card h2{margin:15px 0 8px}.card p{color:var(--muted);line-height:1.6}.btn{border:0;border-radius:12px;padding:12px 17px;color:#03101a;background:linear-gradient(90deg,var(--cyan),#75efff);font-weight:800}.btn.secondary{background:#18233d;color:#dbe9ff;border:1px solid var(--line)}.btn.danger{background:#361521;color:#ff9cac;border:1px solid #673040}.btn.green{background:#123326;color:#75f0af;border:1px solid #245d43}
+.hidden{display:none!important}.screen{min-height:calc(100vh - 72px)}.login{max-width:440px;margin:65px auto}.panel{background:#0a1226ee;border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 25px 100px #0008}.panel h2{margin-top:0}.field{margin:14px 0}.field label{display:block;color:#a9b8d4;font-size:13px;margin-bottom:7px}.field input,.field select{width:100%;padding:13px 14px;border-radius:11px;border:1px solid var(--line);background:#070d1d;color:white;outline:none}.field input:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #28d7ff15}.row{display:grid;grid-template-columns:1fr 1fr;gap:13px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.msg{font-size:13px;color:var(--red);min-height:18px;margin-top:10px}.dashboard{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 72px)}.side{border-right:1px solid var(--line);padding:22px;background:#060c1b}.side button{width:100%;text-align:left;background:transparent;color:#9fb0ce;border:0;padding:12px;border-radius:10px;margin:3px 0}.side button.active,.side button:hover{background:#12203b;color:white}.main{padding:28px}.titlebar{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:22px}.titlebar h2{margin:0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.stat{padding:18px;border:1px solid var(--line);border-radius:16px;background:#0b1429}.stat small{color:var(--muted)}.stat b{display:block;font-size:28px;margin-top:8px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.toolbar input{flex:1;min-width:200px}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:15px}.table{width:100%;border-collapse:collapse;min-width:750px}.table th,.table td{padding:13px;border-bottom:1px solid #182641;text-align:left;font-size:13px}.table th{color:#8fa7cc;background:#0b1428}.badge{padding:5px 9px;border-radius:20px;font-size:11px}.activeb{background:#103424;color:#71efaa}.blocked{background:#3a1520;color:#ff8fa0}.modal{position:fixed;inset:0;background:#0009;display:grid;place-items:center;padding:20px;z-index:20}.modal .panel{width:min(650px,100%);max-height:90vh;overflow:auto}.section{display:none}.section.active{display:block}.studentbox{max-width:760px;margin:25px auto}.notice{padding:13px 15px;background:#0e1c35;border:1px solid #263e66;border-radius:12px;color:#b9cae8;margin:15px 0}.success{color:var(--green)}.footer{text-align:center;color:#61718e;padding:25px;font-size:12px}
+@media(max-width:800px){.cards{grid-template-columns:1fr}.dashboard{grid-template-columns:1fr}.side{border-right:0;border-bottom:1px solid var(--line);display:flex;gap:5px;overflow:auto}.side button{white-space:nowrap}.stats{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr}.main{padding:18px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="logo">NEXUS<span>/CMS</span></div><div class="status"><i class="dot"></i> SYSTEM ONLINE</div></header>
+
+<div id="home" class="screen">
+<div class="container">
+<section class="hero"><div class="eyebrow">NEXT-GENERATION CAMPUS PLATFORM</div><h1>College Management System</h1><p>A modern student and academic administration portal. Separate secure spaces for lecturers and students, with course/semester control and live record management.</p></section>
+<div class="cards">
+<div class="card"><div class="icon">◈</div><h2>Teacher / Lecturer</h2><p>Admin control panel for course and semester selection, student records, editing, renaming, deleting, blocking and searching.</p><button class="btn" onclick="show('teacherLogin')">Enter Faculty Portal →</button></div>
+<div class="card"><div class="icon">◇</div><h2>Student</h2><p>Login with registration number, then complete and maintain mandatory academic and personal information.</p><button class="btn secondary" onclick="show('studentLogin')">Enter Student Portal →</button></div>
+</div>
+<div class="footer">NEXUS CMS • Academic Database Prototype • BCA Project</div>
+</div></div>
+
+<div id="teacherLogin" class="screen hidden"><div class="container"><div class="login panel">
+<h2>Faculty Authentication</h2><p style="color:var(--muted)">Enter the administrator password to access the faculty console.</p>
+<div class="field"><label>ADMIN PASSWORD</label><input id="adminPass" type="password" placeholder="Enter password"></div>
+<div class="msg" id="adminMsg"></div><div class="actions"><button class="btn" onclick="teacherAuth()">Authenticate</button><button class="btn secondary" onclick="show('home')">Back</button></div>
+<p style="font-size:12px;color:#657793;margin-top:20px">Demo password: <b style="color:#cbd8ef">admin123</b></p>
+</div></div></div>
+
+<div id="studentLogin" class="screen hidden"><div class="container"><div class="login panel">
+<h2>Student Access</h2><p style="color:var(--muted)">Enter your registration number to continue.</p>
+<div class="field"><label>REGISTRATION NUMBER</label><input id="studentReg" placeholder="e.g. NEXUS2026001"></div>
+<div class="msg" id="studentMsg"></div><div class="actions"><button class="btn" onclick="studentAuth()">Continue</button><button class="btn secondary" onclick="show('home')">Back</button></div>
+</div></div></div>
+
+<div id="teacherDash" class="hidden">
+<div class="dashboard">
+<aside class="side">
+<button class="active" onclick="section('overview',this)">▣ Overview</button>
+<button onclick="section('records',this)">▤ Student Records</button>
+<button onclick="section('settings',this)">⚙ Course & Semester</button>
+<button onclick="logout()">↪ Logout</button>
+</aside>
+<main class="main">
+<section id="overview" class="section active">
+<div class="titlebar"><div><h2>Faculty Command Center</h2><small style="color:var(--muted)">Academic administration console</small></div><button class="btn" onclick="openAdd()">+ Add Student</button></div>
+<div class="stats"><div class="stat"><small>TOTAL STUDENTS</small><b id="sTotal">0</b></div><div class="stat"><small>ACTIVE</small><b id="sActive">0</b></div><div class="stat"><small>BLOCKED</small><b id="sBlocked">0</b></div><div class="stat"><small>COURSES</small><b id="sCourses">0</b></div></div>
+<div class="panel" style="margin-top:20px"><h3>Selected Academic Context</h3><div class="row"><div class="field"><label>COURSE</label><select id="courseSelect" onchange="refresh()"></select></div><div class="field"><label>SEMESTER</label><select id="semSelect" onchange="refresh()"></select></div></div><div id="contextText" class="notice"></div></div>
+</section>
+
+<section id="records" class="section">
+<div class="titlebar"><div><h2>Student Database</h2><small style="color:var(--muted)">Add, edit, rename, delete or block records</small></div><button class="btn" onclick="openAdd()">+ Add Student</button></div>
+<div class="toolbar"><input id="search" oninput="renderTable()" placeholder="Search registration number, name or course..."><button class="btn secondary" onclick="exportCSV()">Export CSV</button></div>
+<div class="tablewrap"><table class="table"><thead><tr><th>Registration</th><th>Name</th><th>Course</th><th>Semester</th><th>Age</th><th>Status</th><th>Actions</th></tr></thead><tbody id="studentTable"></tbody></table></div>
+</section>
+
+<section id="settings" class="section">
+<div class="titlebar"><div><h2>Academic Configuration</h2><small style="color:var(--muted)">Manage course and semester options</small></div></div>
+<div class="panel"><h3>Courses</h3><div class="toolbar"><input id="newCourse" placeholder="New course name"><button class="btn" onclick="addCourse()">Add Course</button></div><div id="courseList"></div></div>
+<div class="panel" style="margin-top:18px"><h3>Semester Options</h3><p style="color:var(--muted)">The prototype supports Semester 1–8. Select the active semester from the Overview.</p></div>
+</section>
+</main></div></div>
+
+<div id="studentDash" class="hidden"><div class="container"><div class="studentbox panel">
+<div class="titlebar"><div><h2>Student Profile</h2><small style="color:var(--muted)">Registration: <span id="profileReg"></span></small></div><button class="btn secondary" onclick="logout()">Logout</button></div>
+<div class="notice">Complete all mandatory fields. Your information is stored locally in this prototype.</div>
+<form id="studentForm" onsubmit="saveStudent(event)">
+<div class="row"><div class="field"><label>ROLL NUMBER *</label><input id="fRoll" required></div><div class="field"><label>FULL NAME *</label><input id="fName" required></div></div>
+<div class="row"><div class="field"><label>REGISTRATION NUMBER *</label><input id="fReg" required></div><div class="field"><label>AGE *</label><input id="fAge" type="number" min="15" max="80" required></div></div>
+<div class="row"><div class="field"><label>COURSE *</label><select id="fCourse" required></select></div><div class="field"><label>SEMESTER *</label><select id="fSem" required></select></div></div>
+<div class="row"><div class="field"><label>EMAIL *</label><input id="fEmail" type="email" required></div><div class="field"><label>PHONE *</label><input id="fPhone" required></div></div>
+<div class="row"><div class="field"><label>GENDER</label><select id="fGender"><option>Prefer not to say</option><option>Male</option><option>Female</option><option>Other</option></select></div><div class="field"><label>CITY</label><input id="fCity"></div></div>
+<div class="field"><label>ADDRESS</label><input id="fAddress"></div>
+<div class="actions"><button class="btn" type="submit">Save / Update Profile</button></div><div id="saveMsg" class="msg"></div>
+</form></div></div></div>
+
+<div id="modal" class="modal hidden"><div class="panel"><h2 id="modalTitle">Add Student</h2><div class="row">
+<div class="field"><label>REGISTRATION NUMBER *</label><input id="mReg"></div><div class="field"><label>ROLL NUMBER *</label><input id="mRoll"></div>
+</div><div class="row"><div class="field"><label>NAME *</label><input id="mName"></div><div class="field"><label>AGE *</label><input id="mAge" type="number"></div></div>
+<div class="row"><div class="field"><label>COURSE *</label><select id="mCourse"></select></div><div class="field"><label>SEMESTER *</label><select id="mSem"></select></div></div>
+<div class="actions"><button class="btn" onclick="saveAdminStudent()">Save Record</button><button class="btn secondary" onclick="closeModal()">Cancel</button></div><div id="modalMsg" class="msg"></div></div></div>
+
+<script>
+const KEY='nexus_students', CKEY='nexus_courses';
+let students=JSON.parse(localStorage.getItem(KEY)||'[]');
+let courses=JSON.parse(localStorage.getItem(CKEY)||'["BCA","BBA","B.Com","BA","B.Sc"]');
+let currentStudent=null, editing=null;
+const semesters=["Semester 1","Semester 2","Semester 3","Semester 4","Semester 5","Semester 6","Semester 7","Semester 8"];
+
+function show(id){document.querySelectorAll('.screen,#teacherDash,#studentDash').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden')}
+function save(){localStorage.setItem(KEY,JSON.stringify(students));localStorage.setItem(CKEY,JSON.stringify(courses))}
+function fillSelects(){
+['courseSelect','mCourse','fCourse'].forEach(id=>{let e=document.getElementById(id);if(!e)return;e.innerHTML=courses.map(c=>`<option>${esc(c)}</option>`).join('')});
+['semSelect','mSem','fSem'].forEach(id=>{let e=document.getElementById(id);if(!e)return;e.innerHTML=semesters.map(s=>`<option>${s}</option>`).join('')});
+}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function teacherAuth(){if(document.getElementById('adminPass').value==='admin123'){fillSelects();show('teacherDash');refresh()}else document.getElementById('adminMsg').textContent='Invalid administrator password.'}
+function studentAuth(){let r=document.getElementById('studentReg').value.trim();if(!r){document.getElementById('studentMsg').textContent='Registration number is required.';return}currentStudent=students.find(s=>s.reg.toLowerCase()===r.toLowerCase())||{reg:r,status:'active'};fillSelects();loadProfile();show('studentDash')}
+function loadProfile(){let s=currentStudent;document.getElementById('profileReg').textContent=s.reg||'';document.getElementById('fRoll').value=s.roll||'';document.getElementById('fName').value=s.name||'';document.getElementById('fReg').value=s.reg||'';document.getElementById('fAge').value=s.age||'';document.getElementById('fCourse').value=s.course||courses[0];document.getElementById('fSem').value=s.sem||semesters[0];document.getElementById('fEmail').value=s.email||'';document.getElementById('fPhone').value=s.phone||'';document.getElementById('fGender').value=s.gender||'Prefer not to say';document.getElementById('fCity').value=s.city||'';document.getElementById('fAddress').value=s.address||''}
+function saveStudent(e){e.preventDefault();let old=students.findIndex(s=>s.reg.toLowerCase()===currentStudent.reg.toLowerCase());let s={reg:document.getElementById('fReg').value.trim(),roll:document.getElementById('fRoll').value.trim(),name:document.getElementById('fName').value.trim(),age:document.getElementById('fAge').value,course:document.getElementById('fCourse').value,sem:document.getElementById('fSem').value,email:document.getElementById('fEmail').value,phone:document.getElementById('fPhone').value,gender:document.getElementById('fGender').value,city:document.getElementById('fCity').value,address:document.getElementById('fAddress').value,status:currentStudent.status||'active'};if(old>=0)students[old]=s;else students.push(s);currentStudent=s;save();document.getElementById('saveMsg').textContent='Profile saved successfully.';document.getElementById('profileReg').textContent=s.reg}
+function refresh(){fillSelects();let c=document.getElementById('courseSelect').value,sem=document.getElementById('semSelect').value;document.getElementById('contextText').textContent=`Current context: ${c} • ${sem}. Faculty actions apply to student records in the database.`;renderTable();document.getElementById('sTotal').textContent=students.length;document.getElementById('sActive').textContent=students.filter(s=>s.status!=='blocked').length;document.getElementById('sBlocked').textContent=students.filter(s=>s.status==='blocked').length;document.getElementById('sCourses').textContent=courses.length;renderCourses()}
+function section(id,btn){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.side button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');if(id==='records')renderTable();if(id==='settings')renderCourses()}
+function renderTable(){let q=(document.getElementById('search')?.value||'').toLowerCase();let c=document.getElementById('courseSelect')?.value,sem=document.getElementById('semSelect')?.value;let arr=students.filter(s=>(!c||s.course===c)&&(!sem||s.sem===sem)&&Object.values(s).some(v=>String(v).toLowerCase().includes(q)));document.getElementById('studentTable').innerHTML=arr.map(s=>`<tr><td>${esc(s.reg)}</td><td>${esc(s.name||'—')}</td><td>${esc(s.course||'—')}</td><td>${esc(s.sem||'—')}</td><td>${esc(s.age||'—')}</td><td><span class="badge ${s.status==='blocked'?'blocked':'activeb'}">${s.status==='blocked'?'BLOCKED':'ACTIVE'}</span></td><td><button class="btn secondary" onclick="editStudent('${encodeURIComponent(s.reg)}')">Edit</button> <button class="btn ${s.status==='blocked'?'green':'danger'}" onclick="toggleBlock('${encodeURIComponent(s.reg)}')">${s.status==='blocked'?'Unblock':'Block'}</button> <button class="btn danger" onclick="deleteStudent('${encodeURIComponent(s.reg)}')">Delete</button></td></tr>`).join('')||'<tr><td colspan="7" style="color:#7f91ae">No records found.</td></tr>'}
+function openAdd(){editing=null;document.getElementById('modalTitle').textContent='Add Student';['mReg','mRoll','mName','mAge'].forEach(id=>document.getElementById(id).value='');fillSelects();document.getElementById('modal').classList.remove('hidden')}
+function editStudent(r){editing=decodeURIComponent(r);let s=students.find(x=>x.reg===editing);if(!s)return;document.getElementById('modalTitle').textContent='Edit / Rename Student';document.getElementById('mReg').value=s.reg;document.getElementById('mRoll').value=s.roll||'';document.getElementById('mName').value=s.name||'';document.getElementById('mAge').value=s.age||'';document.getElementById('mCourse').value=s.course;document.getElementById('mSem').value=s.sem;document.getElementById('modal').classList.remove('hidden')}
+function saveAdminStudent(){let reg=document.getElementById('mReg').value.trim(),s={reg,roll:document.getElementById('mRoll').value.trim(),name:document.getElementById('mName').value.trim(),age:document.getElementById('mAge').value,course:document.getElementById('mCourse').value,sem:document.getElementById('mSem').value,status:'active'};if(!reg||!s.name){document.getElementById('modalMsg').textContent='Registration number and name are required.';return}if(editing){let i=students.findIndex(x=>x.reg===editing);if(i>=0){s.status=students[i].status;students[i]=s}}else{if(students.some(x=>x.reg.toLowerCase()===reg.toLowerCase())){document.getElementById('modalMsg').textContent='Registration number already exists.';return}students.push(s)}save();closeModal();refresh()}
+function closeModal(){document.getElementById('modal').classList.add('hidden')}
+function toggleBlock(r){r=decodeURIComponent(r);let s=students.find(x=>x.reg===r);if(s){s.status=s.status==='blocked'?'active':'blocked';save();refresh()}}
+function deleteStudent(r){r=decodeURIComponent(r);if(confirm('Delete this student record?')){students=students.filter(x=>x.reg!==r);save();refresh()}}
+function addCourse(){let n=document.getElementById('newCourse').value.trim();if(n&&!courses.includes(n)){courses.push(n);save();document.getElementById('newCourse').value='';refresh()}}
+function renameCourse(i){let n=prompt('Enter new course name:',courses[i]);if(n&&n.trim()){courses[i]=n.trim();save();refresh()}}
+function removeCourse(i){if(confirm('Delete this course option?')){courses.splice(i,1);save();refresh()}}
+function renderCourses(){let e=document.getElementById('courseList');if(e)e.innerHTML=courses.map((c,i)=>`<div style="display:flex;justify-content:space-between;padding:12px;border-bottom:1px solid #182641"><span>${esc(c)}</span><span><button class="btn secondary" onclick="renameCourse(${i})">Rename</button> <button class="btn danger" onclick="removeCourse(${i})">Delete</button></span></div>`).join('')}
+function exportCSV(){let rows=[['Registration','Roll','Name','Course','Semester','Age','Status'],...students.map(s=>[s.reg,s.roll,s.name,s.course,s.sem,s.age,s.status])];let csv=rows.map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='student_records.csv';a.click()}
+function logout(){currentStudent=null;document.getElementById('adminPass').value='';show('home')}
+fillSelects();
+</script>
+</body></html>
